@@ -1,0 +1,128 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://font53.tres" type="DynamicFont" id=2]
+[ext_resource path="res://UI/jogar2.png" type="Texture" id=3]
+[ext_resource path="res://UI/jogar3.png" type="Texture" id=4]
+[ext_resource path="res://UI/jogar1.png" type="Texture" id=5]
+[ext_resource path="res://UI/sair1.png" type="Texture" id=6]
+[ext_resource path="res://UI/sobre3.png" type="Texture" id=7]
+[ext_resource path="res://UI/sair3.png" type="Texture" id=8]
+[ext_resource path="res://UI/sobre2.png" type="Texture" id=9]
+[ext_resource path="res://UI/sair2.png" type="Texture" id=10]
+[ext_resource path="res://UI/sobre1.png" type="Texture" id=11]
+[ext_resource path="res://TextureRect.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Sounds/MenuChange.wav" type="AudioStream" id=13]
+[ext_resource path="res://Sounds/MenuSelection.wav" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/bg.mp3" type="AudioStream" id=15]
+[ext_resource path="res://CAMPUS PERSONAL USE.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 200
+font_data = ExtResource( 16 )
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" parent="." instance=ExtResource( 12 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -98.5
+margin_right = 98.5
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 598.0
+margin_right = 197.0
+margin_bottom = 652.0
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer/CenterContainer"]
+margin_right = 197.0
+margin_bottom = 54.0
+focus_neighbour_top = NodePath("../../CenterContainer3/QuitButton")
+theme = SubResource( 1 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 3 )
+texture_focused = ExtResource( 3 )
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 656.0
+margin_right = 197.0
+margin_bottom = 710.0
+
+[node name="AboutButton" type="TextureButton" parent="VBoxContainer/CenterContainer2"]
+margin_left = 2.0
+margin_right = 195.0
+margin_bottom = 54.0
+theme = SubResource( 1 )
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_focused = ExtResource( 9 )
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 714.0
+margin_right = 197.0
+margin_bottom = 768.0
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer/CenterContainer3"]
+margin_left = 34.0
+margin_right = 162.0
+margin_bottom = 54.0
+focus_neighbour_bottom = NodePath("../../CenterContainer/PlayButton")
+theme = SubResource( 1 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 10 )
+texture_focused = ExtResource( 10 )
+
+[node name="AudioChange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="AudioBg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -16.545
+
+[node name="AudioSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CenterContainer"]
+margin_left = 86.0
+margin_top = 284.0
+margin_right = 1280.0
+margin_bottom = 484.0
+rect_pivot_offset = Vector2( 43, 142 )
+custom_fonts/font = SubResource( 2 )
+text = "PRESTENÇÃO"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="focus_exited" from="VBoxContainer/CenterContainer/PlayButton" to="." method="_on_PlayButton_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/CenterContainer2/AboutButton" to="." method="_on_AboutButton_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer2/AboutButton" to="." method="_on_AboutButton_pressed"]
+[connection signal="focus_exited" from="VBoxContainer/CenterContainer3/QuitButton" to="." method="_on_QuitButton_focus_exited"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer3/QuitButton" to="." method="_on_QuitButton_pressed"]

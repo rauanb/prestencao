@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://TextureRect.tscn" type="PackedScene" id=1]
+[ext_resource path="res://font53.tres" type="DynamicFont" id=2]
+[ext_resource path="res://About.gd" type="Script" id=3]
+[ext_resource path="res://UI/jogar1.png" type="Texture" id=4]
+[ext_resource path="res://UI/jogar2.png" type="Texture" id=5]
+[ext_resource path="res://UI/jogar3.png" type="Texture" id=6]
+[ext_resource path="res://UI/sair1.png" type="Texture" id=7]
+[ext_resource path="res://UI/sair3.png" type="Texture" id=8]
+[ext_resource path="res://UI/sair2.png" type="Texture" id=9]
+[ext_resource path="res://Sounds/MenuSelection.wav" type="AudioStream" id=10]
+[ext_resource path="res://Sounds/MenuChange.wav" type="AudioStream" id=11]
+[ext_resource path="res://MochiyPopPOne-Regular.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://UI/AboutInstru.png" type="Texture" id=13]
+
+[sub_resource type="DynamicFont" id=2]
+size = 38
+font_data = ExtResource( 12 )
+
+[sub_resource type="Theme" id=1]
+default_font = ExtResource( 2 )
+
+[node name="Results" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" parent="." instance=ExtResource( 1 )]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -723.0
+margin_top = 20.0
+margin_right = 723.0
+custom_constants/separation = 30
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_right = 1446.0
+margin_bottom = 292.0
+
+[node name="AboutLabel" type="Label" parent="VBoxContainer/CenterContainer"]
+margin_left = 149.0
+margin_right = 1297.0
+margin_bottom = 292.0
+custom_fonts/font = SubResource( 2 )
+text = "Esse jogo foi desenvolvido com o objetivo de testar
+a atenção e o tempo de resposta de crianças através 
+de estímulos visuais, usando personagens
+ conhecidos dos melhores jogos da década de 90.
+                                                   Contato: rauan_b@hotmail.com"
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 322.0
+margin_right = 1446.0
+margin_bottom = 605.0
+
+[node name="Sprite" type="TextureRect" parent="VBoxContainer/CenterContainer2"]
+margin_left = 298.0
+margin_right = 1147.0
+margin_bottom = 283.0
+texture = ExtResource( 13 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -98.5
+margin_right = 98.5
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer2"]
+margin_top = 656.0
+margin_right = 197.0
+margin_bottom = 710.0
+
+[node name="PlayButton" type="TextureButton" parent="VBoxContainer2/CenterContainer"]
+margin_right = 197.0
+margin_bottom = 54.0
+theme = SubResource( 1 )
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 5 )
+texture_focused = ExtResource( 5 )
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer2"]
+margin_top = 714.0
+margin_right = 197.0
+margin_bottom = 768.0
+
+[node name="QuitButton" type="TextureButton" parent="VBoxContainer2/CenterContainer3"]
+margin_left = 34.0
+margin_right = 162.0
+margin_bottom = 54.0
+theme = SubResource( 1 )
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+texture_focused = ExtResource( 9 )
+
+[node name="AudioChange" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="AudioSelection" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[connection signal="focus_exited" from="VBoxContainer2/CenterContainer/PlayButton" to="." method="_on_PlayButton_focus_exited"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="focus_exited" from="VBoxContainer2/CenterContainer3/QuitButton" to="." method="_on_QuitButton_focus_exited"]
+[connection signal="pressed" from="VBoxContainer2/CenterContainer3/QuitButton" to="." method="_on_QuitButton_pressed"]
