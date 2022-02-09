@@ -91,6 +91,7 @@ margin_bottom = 710.0
 [node name="PlayButton" type="TextureButton" parent="VBoxContainer2/CenterContainer"]
 margin_right = 340.0
 margin_bottom = 54.0
+focus_neighbour_top = NodePath("../../CenterContainer3/QuitButton")
 theme = SubResource( 1 )
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 4 )
@@ -106,6 +107,7 @@ margin_bottom = 768.0
 margin_left = 106.0
 margin_right = 234.0
 margin_bottom = 54.0
+focus_neighbour_bottom = NodePath("../../CenterContainer/PlayButton")
 theme = SubResource( 1 )
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
