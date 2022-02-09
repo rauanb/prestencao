@@ -15,7 +15,7 @@ margin_bottom = 1440.0
 [node name="Actor" type="Sprite" parent="."]
 
 [node name="EndTimer" type="Timer" parent="."]
-wait_time = 100.0
+wait_time = 60.0
 autostart = true
 
 [node name="AudioError" type="AudioStreamPlayer" parent="."]

@@ -4,7 +4,7 @@ var sprite_size = [200, 240]
 var screen_size = [1366, 768]
 
 var delay = [0.4, 1.4]
-var exposure = 2.0
+var exposure = 2.0 
 
 var actors_list = []
 
@@ -17,6 +17,12 @@ var errors = 0
 var ultimo = false
 
 func _ready():
+	if SelAc.hard:
+		exposure = 0.8
+		delay = [0.4, 0.8]
+	
+	SelAc.set_audio(1)
+	SelAc.bgPlayer.play()
 	SelAc.fase = 1
 	randomize()
 	actors_list = [1, 2, 3, 4]

@@ -17,6 +17,10 @@ var errors = 0
 var ultimo = false
 
 func _ready():
+	if SelAc.hard:
+		exposure = 0.5
+		delay = [0.2, 0.4]
+	
 	SelAc.set_audio(2)
 	SelAc.bgPlayer.play()
 	SelAc.fase = 2

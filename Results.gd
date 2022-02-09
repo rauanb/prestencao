@@ -10,16 +10,19 @@ var tx1 = load("res://UI/jogar1.png")
 var tx2 = load("res://UI/jogar2.png")
 var tx3 = load("res://UI/jogar3.png")
 
+
 func _ready():
 	$VBoxContainer2/CenterContainer/PlayButton.set_visible(false)
 	$VBoxContainer2/CenterContainer3/QuitButton.set_visible(false)
 	
+	
 	if SelAc.fase == 3:
-		$VBoxContainer/CenterContainer3/FinishedLabel.text = "PARABÉNS !"
 		$VBoxContainer2/CenterContainer/PlayButton.set_normal_texture(tx1)
 		$VBoxContainer2/CenterContainer/PlayButton.set_hover_texture(tx2)
 		$VBoxContainer2/CenterContainer/PlayButton.set_focused_texture(tx2)
 		$VBoxContainer2/CenterContainer/PlayButton.set_pressed_texture(tx3)
+	if SelAc.erros < 3:
+		$VBoxContainer/CenterContainer3/FinishedLabel.text = "PARABÉNS !"
 	else:
 		$VBoxContainer/CenterContainer3/FinishedLabel.text = ""
 		
@@ -49,7 +52,7 @@ func _on_PlayButton_pressed():
 	yield($AudioSelection,"finished")
 	if SelAc.erros == 3:
 		SelAc.set_audio(0)
-		get_tree().change_scene("res://Selection.tscn")
+		controle_fases(SelAc.fase)
 	elif SelAc.fase == 1:
 		get_tree().change_scene("res://Main2.tscn")
 	elif SelAc.fase == 2:
@@ -86,3 +89,12 @@ func sound(erros,selecionado):
 	SelAc.bgPlayer.stop()
 	$AudioResults.play()
 	
+	
+func controle_fases(num):
+	if num == 1:
+		get_tree().change_scene("res://Main.tscn")
+	elif num == 2:
+		get_tree().change_scene("res://Main2.tscn")
+	else:
+		get_tree().change_scene("res://Main3.tscn")
+		

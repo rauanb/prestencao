@@ -96,7 +96,6 @@ stream = ExtResource( 13 )
 
 [node name="AudioBg" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
-volume_db = -16.545
 
 [node name="AudioSelection" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )

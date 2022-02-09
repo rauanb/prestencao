@@ -10,7 +10,7 @@ func _process(delta):
 		get_tree().quit()
 	aux += delta/2
 	var pulse = Color(abs(sin(2*aux))+0.3,0.1,0.1)
-	print(pulse)
+#	print(pulse)
 	$CenterContainer/Label.set_self_modulate(pulse)
 
 func _on_PlayButton_pressed():
